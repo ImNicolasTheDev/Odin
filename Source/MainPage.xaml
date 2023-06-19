@@ -2,17 +2,17 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Odin.MainPage"
-             Loaded="ContentPage_Loaded">
+             Loaded="ContentPage_Loaded"
+             Appearing="ContentPage_Appearing">
 
     <Grid RowDefinitions="*,65">
         <Image x:Name="loadingImage" Grid.Row="0" BackgroundColor="White" IsVisible="True" Source="loading.gif" IsAnimationPlaying="False"/>
         <WebView x:Name="TheWebview" Grid.Row="0" BackgroundColor="White" IsVisible="False" Navigated="TheWebview_Navigated"/>
 
-        <Grid VerticalOptions="Center" Grid.Row="1" ColumnDefinitions="*,*,*,*" BackgroundColor="{AppThemeBinding Light='#9370db', Dark='#d9b3ff'}" Padding="0,10,0,10">
+        <Grid x:Name="gridContainingButtons" VerticalOptions="Center" Grid.Row="1" ColumnDefinitions="*,*,*" Padding="0,10,0,10">
             <ImageButton Grid.Column="0" Source="{AppThemeBinding Light=calendar_light.png, Dark=calendar_dark.png}" Clicked="EDT_Clicked" WidthRequest="80" CornerRadius="20"/>
             <ImageButton Grid.Column="1" Source="{AppThemeBinding Light=number_light.png, Dark=number_dark.png}" Clicked="Notes_Clicked" WidthRequest="80" CornerRadius="20"/>
-            <ImageButton Grid.Column="2" Source="{AppThemeBinding Light=manage_account_light.png, Dark=manage_account_dark.png}" Clicked="Param_Clicked" WidthRequest="80" CornerRadius="20"/>
-            <ImageButton Grid.Column="3" Source="{AppThemeBinding Light=manage_account_light.png, Dark=manage_account_dark.png}" Clicked="Quit_Clicked" WidthRequest="80" CornerRadius="20"/>
+            <ImageButton Grid.Column="2" Source="{AppThemeBinding Light=shutdown_light.png, Dark=shutdown_dark.png}" Clicked="Quit_Clicked" WidthRequest="80" CornerRadius="20"/>
         </Grid>
     </Grid>
 </ContentPage>

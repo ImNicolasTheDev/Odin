@@ -6,10 +6,11 @@ public partial class Parameters : ContentPage
     public string psswd;
 
     public Parameters()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
         checkTheDefaultLink();
     }
+
 
     private void checkTheDefaultLink()
     {
@@ -30,7 +31,7 @@ public partial class Parameters : ContentPage
 
     private async void saveUserInfo()
     {
-        
+
         if (!string.IsNullOrWhiteSpace((Application.Current as App).Username) && !string.IsNullOrWhiteSpace((Application.Current as App).Password))
         {
             await SecureStorage.Default.SetAsync("username", (Application.Current as App).Username);
@@ -58,11 +59,15 @@ public partial class Parameters : ContentPage
         if (!string.IsNullOrWhiteSpace((Application.Current as App).Username) && !string.IsNullOrWhiteSpace((Application.Current as App).Password))
         {
             errorLabel.IsVisible = false;
-            showUsernameLabel.Text = (Application.Current as App).Username;
-            showPasswordLabel.Text = (Application.Current as App).Password;
+            showUsernameLabel.IsVisible = true;
+            showPasswordLabel.IsVisible = true;
+            showUsernameLabel.Text = string.Concat("Username : ", (Application.Current as App).Username);
+            showPasswordLabel.Text = string.Concat("Password : ", (Application.Current as App).Password);
         }
         else
         {
+            showUsernameLabel.IsVisible = false;
+            showPasswordLabel.IsVisible = false;
             errorLabel.IsVisible = true;
         }
     }
@@ -105,11 +110,28 @@ public partial class Parameters : ContentPage
         }
     }
 
-    private void DeleteEverything_Clicked(object sender, EventArgs e)
+    private async void DeleteEverything_Clicked(object sender, EventArgs e)
     {
+        SecureStorage.RemoveAll();
+        Preferences.Clear();
         SecureStorage.Default.RemoveAll();
         Preferences.Default.Clear();
         (Application.Current as App).InitializeDefaultLink();
-        (Application.Current as App).InitializeUserInfo();
+        await (Application.Current as App).InitializeUserInfo();
+        (Application.Current as App).InitializeColor();
+    }
+
+    private void ColorPickerButton_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new ColorPickerPage());
+    }
+
+    private void ContentPage_Appearing(object sender, EventArgs e)
+    {
+        errorLabel.IsVisible = false;
+        showUsernameLabel.IsVisible = false;
+        showPasswordLabel.IsVisible = false;
+        showUsernameLabel.Text = string.Empty;
+        showPasswordLabel.Text = string.Empty;
     }
 }

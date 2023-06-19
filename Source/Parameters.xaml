@@ -2,34 +2,43 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Odin.Parameters"
-             Title="Parameters">
-    
-    <VerticalStackLayout>
-        
-        <StackLayout x:Name="userInfoLayout" IsVisible="False">
-            <Entry x:Name="usernameEntry" Placeholder="Nom d'utilisateur"/>
-            <Entry x:Name="passwordEntry" IsPassword="True" Placeholder="Mot de passe"/>
-            <Label x:Name="errorLabelInfo" TextColor="Red" Text="You cannot save empty data!" IsVisible="False"/>
+             Title="Parameters"
+             Appearing="ContentPage_Appearing">
+
+    <ScrollView x:Name="theScrollView">
+
+        <VerticalStackLayout Padding="20">
+            <StackLayout x:Name="userInfoLayout" IsVisible="False" Padding="10">
+                <Entry x:Name="usernameEntry" HorizontalOptions="Fill" Placeholder="Nom d'utilisateur"/>
+                <Entry x:Name="passwordEntry" HorizontalOptions="Fill" IsPassword="True" Placeholder="Mot de passe"/>
+                <Label x:Name="errorLabelInfo" HorizontalOptions="Center" TextColor="Red" Text="You cannot save empty data!" IsVisible="False"/>
+                <Button
+                    x:Name="saveInfoButton"
+                    Text="Save"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center"
+                    Clicked="Save_Clicked"/>
+            </StackLayout>
+
+            <Button Text="Add / Change your infos" Clicked="AddOrChangeInfos_Clicked" Margin="0,0,0,10"/>
+            <Label x:Name="showUsernameLabel" HorizontalOptions="Center" IsVisible="False"/>
+            <Label x:Name="showPasswordLabel" HorizontalOptions="Center" IsVisible="False"/>
+            <Label x:Name="errorLabel" HorizontalOptions="Center" TextColor="Red" Text="Error, there is no information saved yet!" IsVisible="False"/>
             <Button
-                x:Name="saveInfoButton"
-                Text="Save"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center"
-                Clicked="Save_Clicked"/>
-        </StackLayout>
-        
-        <Button Text="Add / Change your infos" Clicked="AddOrChangeInfos_Clicked"/>
-        <Label x:Name="showUsernameLabel" Text=""/>
-        <Label x:Name="showPasswordLabel" Text=""/>
-        <Label x:Name="errorLabel" TextColor="Red" Text="Error, there is no information saved yet!" IsVisible="False"/>
-        <Button
-            Text="Show saved infos"
-            Clicked="ShowInfos_Clicked"/>
-        <StackLayout x:Name="defaultLinkLayout" Padding="50" IsVisible="True"> <!-- A CHANGER A FALSE PEUT ETRE ?-->
-            <RadioButton x:Name="btnEdt" Content="Emploi du temps (Par défaut)" CheckedChanged="btnEdt_CheckedChanged"/>
-            <RadioButton x:Name="btnNotes" Content="Notes" CheckedChanged="btnNotes_CheckedChanged"/>
-            <RadioButton x:Name="btnAbsences" Content="Absences" CheckedChanged="btnAbsences_CheckedChanged"/>
-        </StackLayout>
-        <Button Text="DELETE EVERYTHING" TextColor="Red" Clicked="DeleteEverything_Clicked"/>
-    </VerticalStackLayout>
+                Margin="0,10,0,0"
+                Text="Show saved infos"
+                Clicked="ShowInfos_Clicked"/>
+
+            <StackLayout x:Name="defaultLinkLayout" Padding="40" IsVisible="True">
+                <!-- A CHANGER A FALSE PEUT ETRE ?-->
+                <RadioButton x:Name="btnEdt" Content="Emploi du temps (Par défaut)" CheckedChanged="btnEdt_CheckedChanged"/>
+                <RadioButton x:Name="btnNotes" Content="Notes" CheckedChanged="btnNotes_CheckedChanged"/>
+                <RadioButton x:Name="btnAbsences" Content="Absences" CheckedChanged="btnAbsences_CheckedChanged"/>
+            </StackLayout>
+            
+            <Button Text="Modifier la couleur (barre de navigation)" Clicked="ColorPickerButton_Clicked"/>
+
+            <Button Text="Supprimer toutes les données" BackgroundColor="Red" TextColor="White" Clicked="DeleteEverything_Clicked" Margin="0,20,0,0"/>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

@@ -9,13 +9,13 @@
 
     <TabBar>
         <Tab Title="Home"
-             Icon="home.png">
+             Icon="{AppThemeBinding Light=home_light.png, Dark=home_dark.png}">
             <ShellContent
                 ContentTemplate="{DataTemplate local:MainPage}"
                 Route="MainPage"/>
         </Tab>
         <Tab Title="Options"
-             Icon="param.png">
+             Icon="{AppThemeBinding Light=manage_account_light.png, Dark=manage_account_dark.png}">
             <ShellContent
                 ContentTemplate="{DataTemplate local:Parameters}"
                 Route="Parameters"/>

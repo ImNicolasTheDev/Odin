@@ -2,8 +2,6 @@
 
 using HtmlAgilityPack;
 using Microsoft.Maui.Controls;
-using System.Diagnostics;
-using System.Net;
 using System.Web;
 
 public partial class MainPage : ContentPage
@@ -11,17 +9,22 @@ public partial class MainPage : ContentPage
     public string execValue;
     public string id;
     public string psswd;
+    private bool willToQuit = false;
     public MainPage()
     {
         InitializeComponent();
         loadingImage.IsVisible = true;
+        gridContainingButtons.BindingContext = (Application.Current as App);
     }
-
-
 
 
     private void TheWebview_Navigated(object sender, WebNavigatedEventArgs e)
     {
+        if (willToQuit)
+        {
+            Application.Current?.CloseWindow(Application.Current.MainPage.Window);
+            Application.Current.Quit();
+        }
         loadingImage.IsVisible = false;
         TheWebview.IsVisible = true;
     }
@@ -56,14 +59,8 @@ public partial class MainPage : ContentPage
         TheWebview.Source = HttpUtility.UrlDecode((Application.Current as App).NotesLink.Text);
     }
 
-    private void Param_Clicked(object sender, EventArgs e)
-    {
-        // Idk if I'll keep this button or not... Yet, it exists, but does nothing.
-    }
-
     private async void ContentPage_Loaded(object sender, EventArgs e)
     {
-        await Task.Delay(100);
         loadingImage.IsAnimationPlaying = true;
 
         bool result = await (Application.Current as App).InitializeUserInfo();
@@ -88,7 +85,16 @@ public partial class MainPage : ContentPage
     private void Quit_Clicked(object sender, EventArgs e)
     {
         TheWebview.Source = "https://odin.iut.uca.fr/etudiants/?p=logout";
-        Application.Current?.CloseWindow(Application.Current.MainPage.Window);
+        willToQuit = true;
+        TheWebview.IsVisible = false;
+        loadingImage.IsAnimationPlaying = false;
+        loadingImage.IsVisible = true;
+        loadingImage.IsAnimationPlaying = true;
+    }
+
+    private void ContentPage_Appearing(object sender, EventArgs e)
+    {
+        gridContainingButtons.BackgroundColor = (Application.Current as App).color;
     }
 }
 

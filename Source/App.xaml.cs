@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-
-namespace Odin;
+﻿namespace Odin;
 
 public partial class App : Application
 {
@@ -10,12 +8,20 @@ public partial class App : Application
     public Link AbsencesLink = new Link(3, "https%3A%2F%2Fodin.iut.uca.fr%2Fetudiants%2F%3Fp%3Dabsences%26nonclose%3D7");
     public string Username;
     public string Password;
+    public Color color { get; set; }
 
     public App()
     {
         InitializeComponent();
         InitializeDefaultLink();
+        InitializeColor();
         MainPage = new AppShell();
+    }
+
+    public void InitializeColor()
+    {
+        string colorInString = Preferences.Default.Get<string>("color", "cc99ff");
+        color = Color.FromArgb(colorInString);
     }
 
     public void InitializeDefaultLink()

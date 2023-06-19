@@ -7,5 +7,5 @@ This app is made in .NET MAUI. It helps students to see their schedule and their
 I hope you'll enjoy this simple yet useful app! ✨
 
 ### Coming in future releases :
-*- A button to disconnect yourself and close the app* ✔️
+*- A button to disconnect yourself and close the app* ✔️  
 *- A color picker to change the appearance of the navigation bar!* ✔️

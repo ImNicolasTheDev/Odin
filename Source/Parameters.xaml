@@ -39,6 +39,14 @@
             <Button Text="Modifier la couleur (barre de navigation)" Clicked="ColorPickerButton_Clicked"/>
 
             <Button Text="Supprimer toutes les données" BackgroundColor="Red" TextColor="White" Clicked="DeleteEverything_Clicked" Margin="0,20,0,0"/>
+            <Grid Margin="0,10,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Label HorizontalOptions="End" VerticalOptions="Center" >Afficher le menu des accès rapides</Label>
+                <CheckBox HorizontalOptions="Start" VerticalOptions="Center" x:Name="displayMenuCheckbox" Grid.Column="1" CheckedChanged="CheckBox_CheckedChanged"/>
+            </Grid>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

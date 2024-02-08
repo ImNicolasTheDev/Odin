@@ -42,17 +42,7 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android|AnyCPU'">
 	  <ApplicationDisplayVersion>1.0.0</ApplicationDisplayVersion>
-	  <AndroidStoreUncompressedFileExtensions>.png</AndroidStoreUncompressedFileExtensions>
-	  <TrimMode>copyused</TrimMode>
-	  <AndroidKeyStore>True</AndroidKeyStore>
-	  <AndroidSigningKeyStore>odin.keystore</AndroidSigningKeyStore>
-	  <AndroidSigningKeyAlias>key</AndroidSigningKeyAlias> <!-- Change this to the key in the store -->
-	  <AndroidSigningKeyPass>password</AndroidSigningKeyPass> <!-- Change this to the key's password -->
-	  <AndroidSigningStorePass>password</AndroidSigningStorePass> <!-- Change this to the store's password -->
-	  <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
-	  <AndroidUseAapt2>True</AndroidUseAapt2>
-	  <AndroidPackageFormat>aab</AndroidPackageFormat>
-	  <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
+	  <AndroidKeyStore>False</AndroidKeyStore>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
@@ -118,9 +108,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Raw\loading_cat.gif" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="ColorPicker.Maui" Version="1.0.0" />
 		<PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiAsset Update="Resources\Raw\loading_cat.gif">
+	    <Resize>False</Resize>
+	  </MauiAsset>
 	</ItemGroup>
 
 	<ItemGroup>

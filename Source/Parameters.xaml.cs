@@ -9,6 +9,7 @@ public partial class Parameters : ContentPage
     {
         InitializeComponent();
         checkTheDefaultLink();
+        displayMenuCheckbox.IsChecked = (Application.Current as App).displayFastAccessMenu;
     }
 
 
@@ -86,6 +87,12 @@ public partial class Parameters : ContentPage
         (Application.Current as App).DefaultLink = l;
     }
 
+    private void updateDisplayMenu(bool value)
+    {
+        Preferences.Default.Set("displayMenu", value);
+        (Application.Current as App).displayFastAccessMenu = value;
+    }
+
     private void btnEdt_CheckedChanged(object sender, CheckedChangedEventArgs e)
     {
         if (e.Value)
@@ -133,5 +140,10 @@ public partial class Parameters : ContentPage
         showPasswordLabel.IsVisible = false;
         showUsernameLabel.Text = string.Empty;
         showPasswordLabel.Text = string.Empty;
+    }
+
+    private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+    {
+        updateDisplayMenu(displayMenuCheckbox.IsChecked);
     }
 }

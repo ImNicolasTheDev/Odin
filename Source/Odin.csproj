@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net7.0-android;net7.0-maccatalyst</TargetFrameworks>
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
+		<TargetFrameworks>net7.0-android33.0</TargetFrameworks>
+		<!--<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>-->
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
 		<OutputType>Exe</OutputType>
@@ -10,24 +10,24 @@
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
-
-		<!-- Display name -->
+		
 		<ApplicationTitle>Odin</ApplicationTitle>
-
-		<!-- App Identifier -->
 		<ApplicationId>com.imnicolasthedev.odin</ApplicationId>
 		<ApplicationIdGuid>dba4da85-e77a-42b7-9dcc-9cbaee47dfe9</ApplicationIdGuid>
+		<Copyright>See the license on ImNicolasTheDev GitHub's repo</Copyright>
+		<Description>This app was made to auto-authenticate to uca services.</Description>
 
-		<!-- Versions -->
-		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
-		<ApplicationVersion>1</ApplicationVersion>
+		<ApplicationDisplayVersion>2.0</ApplicationDisplayVersion>
+		<ApplicationVersion>2</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">33.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<GenerateAppInstallerFile>False</GenerateAppInstallerFile>
 		<AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
@@ -40,54 +40,46 @@
 		<SignAssembly>False</SignAssembly>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android|AnyCPU'">
-	  <ApplicationDisplayVersion>1.0.0</ApplicationDisplayVersion>
-	  <AndroidKeyStore>False</AndroidKeyStore>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android33.0|AnyCPU'">
+		
+		<!-- Android Key Store -->
+		<AndroidKeyStore>True</AndroidKeyStore>
+		<AndroidSigningKeyStore>keystore</AndroidSigningKeyStore>
+		<AndroidSigningKeyAlias>key</AndroidSigningKeyAlias>			<!-- Change this to the key in the store -->
+		<AndroidSigningKeyPass>password</AndroidSigningKeyPass>			<!-- Change this to the key's password -->
+		<AndroidSigningStorePass>password</AndroidSigningStorePass>		<!-- Change this to the store's password -->
+
+		<AndroidUseAapt2>True</AndroidUseAapt2>
+		<AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
+		<AndroidPackageFormat>apk</AndroidPackageFormat>
+		<AndroidEnableMultiDex>False</AndroidEnableMultiDex>
+		<RunAOTCompilation>False</RunAOTCompilation>
+		<EnableLLVM>False</EnableLLVM>
+		<TrimMode>copyused</TrimMode>
+		<AndroidKeyStore>False</AndroidKeyStore>
+		<AndroidStoreUncompressedFileExtensions>.png;.gif</AndroidStoreUncompressedFileExtensions>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
-	  <ApplicationDisplayVersion>1.0.0</ApplicationDisplayVersion>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android33.0|AnyCPU'">
+
+		<!-- Android Key Store -->
+		<AndroidSigningKeyStore>keystore</AndroidSigningKeyStore>
+		<AndroidSigningKeyAlias>key</AndroidSigningKeyAlias>			<!-- Change this to the key in the store -->
+		<AndroidSigningKeyPass>password</AndroidSigningKeyPass>			<!-- Change this to the key's password -->
+		<AndroidSigningStorePass>password</AndroidSigningStorePass>		<!-- Change this to the store's password -->
+		
+		<AndroidUseAapt2>True</AndroidUseAapt2>
+		<AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
+		<AndroidPackageFormat>apk</AndroidPackageFormat>
+		<AndroidEnableMultiDex>False</AndroidEnableMultiDex>
+		<RunAOTCompilation>False</RunAOTCompilation>
+		<EnableLLVM>False</EnableLLVM>
+		<TrimMode>copyused</TrimMode>
+		<AndroidKeyStore>False</AndroidKeyStore>
+		<AndroidStoreUncompressedFileExtensions>.png;.gif</AndroidStoreUncompressedFileExtensions>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-maccatalyst|AnyCPU'">
-	  <ApplicationDisplayVersion>1.0.0</ApplicationDisplayVersion>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-windows10.0.19041.0|AnyCPU'">
-	  <ApplicationDisplayVersion>1.0.0</ApplicationDisplayVersion>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android|AnyCPU'">
-	  <ApplicationDisplayVersion>1.0.0</ApplicationDisplayVersion>
-	  <AndroidPackageFormat>aab</AndroidPackageFormat>
-	  <AndroidStoreUncompressedFileExtensions>.png</AndroidStoreUncompressedFileExtensions>
-	  <TrimMode>copyused</TrimMode>
-	  <AndroidKeyStore>True</AndroidKeyStore>
-	  <AndroidSigningKeyStore>odin.keystore</AndroidSigningKeyStore>
-	  <AndroidSigningKeyAlias>key</AndroidSigningKeyAlias> <!-- Change this to the key in the store -->
-	  <AndroidSigningKeyPass>password</AndroidSigningKeyPass> <!-- Change this to the key's password -->
-	  <AndroidSigningStorePass>password</AndroidSigningStorePass> <!-- Change this to the store's password -->
-	  <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
-	  <RunAOTCompilation>False</RunAOTCompilation>
-	  <AndroidUseAapt2>True</AndroidUseAapt2>
-	  <Optimize>true</Optimize>
-	  <OutputPath>bin\Release</OutputPath>
-	  <WarningLevel>4</WarningLevel>
-	  <AndroidLinkMode>SdkOnly</AndroidLinkMode>
-	  <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
-	  <ApplicationDisplayVersion>1.0.0</ApplicationDisplayVersion>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-maccatalyst|AnyCPU'">
-	  <ApplicationDisplayVersion>1.0.0</ApplicationDisplayVersion>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-windows10.0.19041.0|AnyCPU'">
-	  <ApplicationDisplayVersion>1.0.0</ApplicationDisplayVersion>
-	</PropertyGroup>
 
 	<ItemGroup>
 		<!-- App Icon -->
@@ -107,27 +99,22 @@
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <None Remove="Resources\Raw\loading_cat.gif" />
-	</ItemGroup>
-
+	<!-- Nuggets -->
 	<ItemGroup>
 		<PackageReference Include="ColorPicker.Maui" Version="1.0.0" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="6.1.0" />
 		<PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiAsset Update="Resources\Raw\loading_cat.gif">
-	    <Resize>False</Resize>
-	  </MauiAsset>
 	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiXaml Update="ColorPickerPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Parameters.xaml">
+	  <MauiXaml Update="Credits.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Options.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

@@ -5,35 +5,45 @@
              x:Class="Odin.ColorPickerPage"
              Title="ColorPickerPage">
     
-    <VerticalStackLayout x:Name="ColorPickerLayout" Spacing="15" VerticalOptions="Center">
+    <ContentPage.Resources>
+        
+        <Style x:Key="frames" TargetType="Frame">
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="IsClippedToBounds" Value="True" />
+        </Style>
+        
+        <Style x:Key="gridFrame" TargetType="Grid">
+            <Setter Property="HeightRequest" Value="70" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="WidthRequest" Value="350" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="Grid.Row" Value="1" />
+            <Setter Property="ColumnDefinitions" Value="*,*,*" />
+            <Setter Property="Padding" Value="0,10,0,10" />
+        </Style>
+        
+    </ContentPage.Resources>
 
+    <VerticalStackLayout x:Name="ColorPickerLayout" Spacing="15" VerticalOptions="Center">
         <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-            <Frame x:Name="Frame1" Padding="0" Margin="0" IsClippedToBounds="True">
-                <Grid HeightRequest="70"
-                            HorizontalOptions="Center"
-                            WidthRequest="350" 
-                            VerticalOptions="Center" 
-                            Grid.Row="1" 
-                            ColumnDefinitions="*,*,*" 
-                            Padding="0,10,0,10">
+
+            <Frame x:Name="Frame1" Style="{StaticResource frames}">
+                <Grid Style="{StaticResource gridFrame}">
                     <ImageButton Grid.Column="0" Source="calendar_light.png" WidthRequest="80" CornerRadius="20"/>
                     <ImageButton Grid.Column="1" Source="number_light.png" WidthRequest="80" CornerRadius="20"/>
                     <ImageButton Grid.Column="2" Source="shutdown_light.png" WidthRequest="80" CornerRadius="20"/>
                 </Grid>
             </Frame>
-            <Frame x:Name="Frame2" Padding="0" Margin="0" IsClippedToBounds="True">
-                <Grid HeightRequest="70"
-                            HorizontalOptions="Center"
-                            WidthRequest="350" 
-                            VerticalOptions="Center" 
-                            Grid.Row="1" 
-                            ColumnDefinitions="*,*,*" 
-                            Padding="0,10,0,10">
+
+            <Frame x:Name="Frame2" Style="{StaticResource frames}">
+                <Grid Style="{StaticResource gridFrame}">
                     <ImageButton Grid.Column="0" Source="calendar_dark.png" WidthRequest="80" CornerRadius="20"/>
                     <ImageButton Grid.Column="1" Source="number_dark.png" WidthRequest="80" CornerRadius="20"/>
                     <ImageButton Grid.Column="2" Source="shutdown_dark.png" WidthRequest="80" CornerRadius="20"/>
                 </Grid>
             </Frame>
+
         </StackLayout>
 
         <Border x:Name="ColorPickerHolderFrame"

@@ -6,19 +6,8 @@
     xmlns:local="clr-namespace:Odin"
     Shell.FlyoutBehavior="Disabled">
 
-    <!--<Shell.FlyoutBackground>
-        <LinearGradientBrush StartPoint="0,0"
-                             EndPoint="1,1">
-            <GradientStop Color="#8A2387"
-                          Offset="0.1" />
-            <GradientStop Color="#E94057"
-                          Offset="0.6" />
-            <GradientStop Color="#F27121"
-                          Offset="1.0" />
-        </LinearGradientBrush>
-    </Shell.FlyoutBackground>-->
     <TabBar>
-        <Tab x:Name="tab1" Title="Home"
+        <Tab x:Name="tab1" Title="Accueil"
              Icon="{AppThemeBinding Light=home_light.png, Dark=home_dark.png}">
             <ShellContent
                 ContentTemplate="{DataTemplate local:MainPage}"
@@ -27,8 +16,8 @@
         <Tab x:Name="tab2" Title="Options"
              Icon="{AppThemeBinding Light=manage_account_light.png, Dark=manage_account_dark.png}">
             <ShellContent
-                ContentTemplate="{DataTemplate local:Parameters}"
-                Route="Parameters"/>
+                ContentTemplate="{DataTemplate local:Options}"
+                Route="Options"/>
         </Tab>
     </TabBar>
 
@@ -40,6 +29,6 @@
     <ShellContent
         Title="Options"
         Icon="{AppThemeBinding Light=manage_account_light.png, Dark=manage_account_dark.png}"
-        ContentTemplate="{DataTemplate local:Parameters}"
-        Route="Parameters"/>
+        ContentTemplate="{DataTemplate local:Options}"
+        Route="Options"/>
 </Shell>

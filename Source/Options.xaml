@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Odin.Options"
+             Title="Options"
+             Appearing="ContentPage_Appearing">
+
+    <ScrollView x:Name="theScrollView">
+
+        <VerticalStackLayout Padding="20">
+            <StackLayout x:Name="userInfoLayout" IsVisible="False" Padding="10">
+                <Entry x:Name="usernameEntry" HorizontalOptions="Fill" Placeholder="Nom d'utilisateur"/>
+                <Entry x:Name="passwordEntry" HorizontalOptions="Fill" IsPassword="True" Placeholder="Mot de passe"/>
+                <Label x:Name="errorLabelInfo" HorizontalOptions="Center" TextColor="Red" Text="L'identifiant / le mot de passe est invalide !" IsVisible="False"/>
+                <Button
+                    x:Name="saveInfoButton"
+                    Text="Sauvegarder"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center"
+                    Margin="8"
+                    Clicked="Save_Clicked"/>
+            </StackLayout>
+    
+            <Button x:Name="addChangeInfosButton" Text="Enregistrer identifiant / mot de passe" Clicked="AddOrChangeInfos_Clicked" Margin="0,0,0,10"/>
+            <Label x:Name="showUsernameLabel" HorizontalOptions="Center" IsVisible="False"/>
+            <Label x:Name="showPasswordLabel" HorizontalOptions="Center" IsVisible="False"/>
+            <Label x:Name="errorLabel" HorizontalOptions="Center" TextColor="Red" Text="Erreur : aucune information trouvée." IsVisible="False"/>
+            <Button x:Name="showInfosButton" Margin="0,10,0,0" Text="Afficher les infos enregistrées" Clicked="ShowInfos_Clicked"/>
+
+            <StackLayout x:Name="defaultLinkLayout" Padding="40" IsVisible="True">
+                <RadioButton x:Name="btnEdt" Content="Emploi du temps (Par défaut)" CheckedChanged="btnEdt_CheckedChanged"/>
+                <RadioButton x:Name="btnNotes" Content="Notes" CheckedChanged="btnNotes_CheckedChanged"/>
+                <RadioButton x:Name="btnAbsences" Content="Absences" CheckedChanged="btnAbsences_CheckedChanged"/>
+            </StackLayout>
+
+            <Button Text="Modifier la couleur (barre de navigation)" Clicked="ColorPickerButton_Clicked"/>
+            <Button Text="Supprimer toutes les données" BackgroundColor="Red" TextColor="White" Clicked="DeleteEverything_Clicked" Margin="0,20,0,0"/>
+
+            <Grid Margin="0,10,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Label HorizontalOptions="End" VerticalOptions="Center" >Afficher le menu des accès rapides</Label>
+                <CheckBox HorizontalOptions="Start" VerticalOptions="Center" x:Name="displayMenuCheckbox" Grid.Column="1" CheckedChanged="CheckBox_CheckedChanged"/>
+            </Grid>
+            
+            <Button Text="Crédits" BackgroundColor="LightGray" Clicked="Credits_Button_Clicked"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

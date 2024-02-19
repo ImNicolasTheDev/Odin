@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Odin.Credits"
+             Title="Crédits"
+             Appearing="ContentPage_Appearing">
+
+    <ContentPage.Resources>
+        <Style x:Key="button" TargetType="Button">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="WidthRequest" Value="350"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <FlexLayout Direction="Column" VerticalOptions="Center" HorizontalOptions="Center">
+        <Button
+            Style="{StaticResource button}"
+            Text="Animation de chargement : VisualModo" 
+            Clicked="Button_Clicked"
+            BackgroundColor="{AppThemeBinding Light='MediumPurple', Dark='FloralWhite'}"/>
+        <Button
+            Style="{StaticResource button}"
+            Text="Développeur : ImNicolasTheDev" 
+            Clicked="Button_Clicked_1"
+            BackgroundColor="{AppThemeBinding Light='DarkSlateBlue', Dark='FloralWhite'}"/>
+    </FlexLayout>
+</ContentPage>

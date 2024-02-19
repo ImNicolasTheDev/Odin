@@ -1,5 +1,8 @@
 ﻿namespace Odin
 {
+    /// <summary>
+    /// Link class used to store links to open by default in-app
+    /// </summary>
     public class Link
     {
         public int Id { get; init; }

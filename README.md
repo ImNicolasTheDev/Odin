@@ -6,6 +6,7 @@ This app was made in .NET MAUI / C#. It helps students to see their schedule and
     - There's also a floating navbar to easily navigate to schedule / marks page faster, and to disconnect and exit the app. This menu can be disabled in the settings.  
     - New loading animation !
     - The app no longer crashes when there's no internet available.
+    - New secrets... 👀
   
 - **The second page (Options)** contains the user-tokens management, where the user can save and show their informations in and from the *SecureStorage*. The user can set a default page to open when the app starts. This value is stored (as previously said) in *Preferences*. You can also change the color of the floating menu, and delete every information saved in the app.
     

@@ -48,7 +48,7 @@ public partial class Credits : ContentPage
     }
 
     /// <summary>
-    /// Little secret... Displays a toast alert the first time the user opens the app.
+    /// Little secret... Displays a toast alert the first time the user opens the credits page.
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>

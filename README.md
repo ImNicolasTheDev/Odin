@@ -11,7 +11,7 @@ Feel free to **contribute** to the project!
 
 <div align="center">
     <img style="width: 20%;" src="Images/HomePage.png" alt="HomePage">
-    <img style="width: 20%; margin: 5%;" src="Images/OptionsPage.png" alt="OptionsPage">
+    <img style="width: 20%; margin: 10px;" src="Images/OptionsPage.png" alt="OptionsPage">
     <img style="width: 20%;" src="Images/ColorPickerPage.png" alt="ColorPickerPage">
 </div>  
   

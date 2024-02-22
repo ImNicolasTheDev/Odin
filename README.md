@@ -10,9 +10,9 @@ Feel free to **contribute** to the project!
 - **The second page (Options)** contains the user-tokens management, where the user can save and show their informations in and from the *SecureStorage*. The user can set a default page to open when the app starts. This value is stored (as previously said) in *Preferences*. You can also change the color of the floating menu, and delete every information saved in the app.
 
 <div align="center">
-    <img style="width: 50px;" src="Images/HomePage.png" alt="HomePage">
-    <img style="width: 50px;" src="Images/OptionsPage.png" alt="OptionsPage">
-    <img style="width: 50px;" src="Images/ColorPickerPage.png" alt="ColorPickerPage">
+    <img style="width: 20%;" src="Images/HomePage.png" alt="HomePage">
+    <img style="width: 20%;" src="Images/OptionsPage.png" alt="OptionsPage">
+    <img style="width: 20%;" src="Images/ColorPickerPage.png" alt="ColorPickerPage">
 </div>  
   
 ✨ I hope you'll enjoy this simple yet useful app! ✨
